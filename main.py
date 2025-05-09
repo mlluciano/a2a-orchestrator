@@ -27,7 +27,7 @@ def main(host, port):
         outputModes=["text"],
     )
 
-    capabilities = AgentCapabilities(streaming=False)
+    capabilities = AgentCapabilities(streaming=True)
     agent_card = AgentCard(
         name="Orchestrator Agent",
         description="Routes questions to appropriate domain agents",

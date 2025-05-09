@@ -58,9 +58,10 @@ class OrchestratorTaskManager(InMemoryTaskManager):
         # Collect all responses into a list and return (non-streaming workaround)
         results = []
         async for response in client.send_task_streaming(payload=request.params.model_dump()):
-            print(response)
-            results.append(response)
-        return JSONRPCResponse(id=request.id, result=results)
+            yield response
+        #     print(response)
+        #     results.append(response)
+        # return JSONRPCResponse(id=request.id, result=results)
 
     def route_to_agent(self, text: str) -> str:
         if "biodiversity" in text or "taxonomy" in text:
